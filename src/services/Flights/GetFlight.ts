@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import { Request, Response } from "express";
 import { getClient } from "../../db/db";
 import { AppException } from "../../errors/AppException";
@@ -12,7 +13,7 @@ export class GetFlight {
 			const seatsRepository = new SeatsRepository(dbConn);
 			const { id } = req.params;
 
-			const { rows: flight } = id ? await flightRepository.getFlightById(id) : await flightRepository.getFlightAll();
+			const { rows: flight } = isNaN(Number(id)) ? await flightRepository.getFlightAll() : await flightRepository.getFlightById(id);
 			if (!flight.length) throw new AppException("Voo não encontrado!", 404);
 
 			for await (const item of flight) {

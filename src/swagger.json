@@ -5,7 +5,7 @@
 		"version": "1.0.0"
 	},
 	"paths": {
-		"/api/check-in/{idVoo}/{idPassageiro}": {
+		"/api/check-in/{idVoo}/{idPassageiro}?": {
 			"get": {
 				"tags": [
 					"CheckIn"
@@ -206,7 +206,7 @@
 				}
 			}
 		},
-		"/api/flights/flight/{id?}": {
+		"/api/flights/flight/{id}": {
 			"get": {
 				"tags": [
 					"Flights"

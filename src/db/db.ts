@@ -1,3 +1,6 @@
+/* eslint-disable prefer-destructuring */
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
 import "dotenv/config";
 import { readFile } from "fs/promises";
 import { resolve } from "path";

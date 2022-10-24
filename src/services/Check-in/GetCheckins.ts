@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import { Request, Response } from "express";
 import { getClient } from "../../db/db";
 import { AppException } from "../../errors/AppException";
@@ -15,7 +16,7 @@ export class GetFlight {
 			const { rows: flight } = await flightRepository.getFlightById(idVoo);
 			if (!flight.length) throw new AppException("Voo não encontrado!", 404);
 
-			const { rows: passagers } = idPassageiro ? await passagerRepository.getPassagerById(idPassageiro) : await passagerRepository.getPassagerByIdVoo(idVoo);
+			const { rows: passagers } = isNaN(Number(idPassageiro)) ? await passagerRepository.getPassagerByIdVoo(idVoo) : await passagerRepository.getPassagerById(idPassageiro);
 
 			return res.status(200).json(passagers);
 		} catch(error: any) {
