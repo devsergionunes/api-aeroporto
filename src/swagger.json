@@ -260,6 +260,189 @@
 					}
 				}
 			}
+		},
+		"/api/flights/airplane": {
+			"post": {
+				"tags": [
+					"Flights"
+				],
+				"summary": "Cadastra avião",
+				"description": "Cadastra avião",
+				"operationId": "postAirplane",
+				"requestBody" : {
+					"content": {
+						"application/json": {
+							"description": "Success",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"nome": {
+										"type": "string",
+										"description": "Nome do avião"
+									},
+									"modelo": {
+										"type": "string",
+										"description": "Modelo do avião"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"message": {
+											"type": "string",
+											"description": "Mensagem de sucesso"
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"message": {
+											"type": "string",
+											"description": "Mensagem de erro"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/flights/airplane/{id}": {
+			"get": {
+				"tags": [
+					"Flights"
+				],
+				"summary": "Busca avião por id",
+				"description": "Busca avião por id",
+				"operationId": "getAirplaneById",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "Id do avião",
+						"required": false,
+						"schema": {
+							"type": "number"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"message": {
+											"type": "string",
+											"description": "Mensagem de sucesso"
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"message": {
+											"type": "string",
+											"description": "Mensagem de erro"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/flights/seats": {
+			"post": {
+				"tags": [
+					"Flights"
+				],
+				"summary": "Cadastra assento",
+				"description": "Cadastra assento",
+				"operationId": "postSeats",
+				"requestBody" : {
+					"content": {
+						"application/json": {
+							"description": "Success",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"idAviao": {
+										"type": "number",
+										"description": "Id do avião"
+									},
+									"assento": {
+										"type": "string",
+										"description": "Assento do avião EX: A1"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"message": {
+											"type": "string",
+											"description": "Mensagem de sucesso"
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"message": {
+											"type": "string",
+											"description": "Mensagem de erro"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	},
 	"components": {
@@ -290,15 +473,6 @@
 					"classe": {
 						"type": "number",
 						"description": "Clase que o passageiro está viajando"
-					}
-				}
-			},
-			"LoginInvalido": {
-				"type": "object",
-				"properties": {
-					"message": {
-						"type": "string",
-						"description": "Login invalido"
 					}
 				}
 			}
