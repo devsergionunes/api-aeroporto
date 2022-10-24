@@ -32,13 +32,12 @@
 
 <hr>
 
-## INICIANDO O PROJETO:
-
 ## DOCUMENTAÇÃO:
 
 - [link para a documentação da api](http://localhost:3333/api-docs/)
 - Rota para a documentação da api. (http://localhost:3333/api-docs/)
 
+## INICIANDO O PROJETO:
 ### Variaveis de ambiente (arquivo .env):
 - Crie um arquivo .env na raiz do projeto e adicione as seguintes variaveis:
 <pre>
