@@ -1,0 +1,307 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"title": "API",
+		"version": "1.0.0"
+	},
+	"paths": {
+		"/api/check-in/{idVoo}/{idPassageiro}": {
+			"get": {
+				"tags": [
+					"CheckIn"
+				],
+				"summary": "Busca Check in",
+				"description": "Busca Check in dos passageiros baseado no id do voo ou id do passageiro que vai como parâmetro na rota",
+				"operationId": "getCheckIn",
+				"parameters": [
+					{
+						"name": "idVoo",
+						"in": "path",
+						"description": "Id do voo",
+						"required": true,
+						"schema": {
+							"type": "number"
+						}
+					},
+					{
+						"name": "idPassageiro",
+						"in": "path",
+						"description": "Id do passageiro",
+						"required": false,
+						"schema": {
+							"type": "number"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Passageiro"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/check-in/{idVoo}/": {
+			"post": {
+				"tags": [
+					"CheckIn"
+				],
+				"summary": "Cria Check in",
+				"description": "Cria Check in dos passageiros baseado no id do voo",
+				"operationId": "postCheckIn",
+				"parameters": [
+					{
+						"name": "idVoo",
+						"in": "path",
+						"description": "Id do voo",
+						"required": true,
+						"schema": {
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"description": "Success",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"idAssento": {
+										"type": "number",
+										"description": "Id do assento"
+									},
+									"nomePassageiro": {
+										"type": "string",
+										"description": "Nome do passageiro"
+									},
+									"indBagagem": {
+										"type": "boolean",
+										"description": "Indicador de bagagem"
+									},
+									"classe": {
+										"type": "number",
+										"description": "Classe do passageiro (1 - Primeira Classe, 2 - Classe Executiva, 3 - Classe Econômica)"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"message": {
+											"type": "string",
+											"description": "Mensagem de sucesso"
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"message": {
+											"type": "string",
+											"description": "Mensagem de erro"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/flights/flight": {
+			"post": {
+				"tags": [
+					"Flights"
+				],
+				"summary": "Cria voo",
+				"description": "Cria voo",
+				"operationId": "postFlights",
+				"requestBody" : {
+					"content": {
+						"application/json": {
+							"description": "Success",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"idAviao": {
+										"type": "number",
+										"description": "Id do avião"
+									},
+									"origem": {
+										"type": "string",
+										"description": "Origem do voo"
+									},
+									"destino": {
+										"type": "string",
+										"description": "Destino do voo"
+									},
+									"data": {
+										"type": "string",
+										"description": "Data do voo"
+									},
+									"hora": {
+										"type": "string",
+										"description": "Hora do voo"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"message": {
+											"type": "string",
+											"description": "Mensagem de sucesso"
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"message": {
+											"type": "string",
+											"description": "Mensagem de erro"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/flights/flight/{id?}": {
+			"get": {
+				"tags": [
+					"Flights"
+				],
+				"summary": "Busca voo por id",
+				"description": "Busca voo por id",
+				"operationId": "getFlightsById",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "Id do voo",
+						"required": false,
+						"schema": {
+							"type": "number"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"message": {
+											"type": "string",
+											"description": "Mensagem de sucesso"
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"message": {
+											"type": "string",
+											"description": "Mensagem de erro"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"components": {
+		"schemas": {
+			"Passageiro": {
+				"type": "object",
+				"properties": {
+					"id_passageiro": {
+						"type": "number",
+						"description": "Id do passageiro"
+					},
+					"id_aviao": {
+						"type": "number",
+						"description": "Id do aviao"
+					},
+					"id_assento": {
+						"type": "number",
+						"description": "Id do assento"
+					},
+					"nome": {
+						"type": "string",
+						"description": "Nome do passageiro"
+					},
+					"ind_bagagem": {
+						"type": "string",
+						"description": "Se tera bagagem"
+					},
+					"classe": {
+						"type": "number",
+						"description": "Clase que o passageiro está viajando"
+					}
+				}
+			},
+			"LoginInvalido": {
+				"type": "object",
+				"properties": {
+					"message": {
+						"type": "string",
+						"description": "Login invalido"
+					}
+				}
+			}
+		}
+	}
+}

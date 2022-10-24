@@ -5,19 +5,21 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --files --watch \"src//\" --exec \"ts-node --files src/server.ts\" -e ts",
-		"build": "tsc --build"
+    "build": "tsc --build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/swagger-ui-express": "^4.1.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.2",
     "express": "^4.18.0",
     "express-async-errors": "^3.1.1",
     "joi": "^17.6.1",
     "joi-translation-pt-br": "0.0.6",
-    "pg": "^8.8.0"
+    "pg": "^8.8.0",
+    "swagger-ui-express": "^4.5.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
